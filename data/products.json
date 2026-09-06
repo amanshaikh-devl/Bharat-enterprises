@@ -1,1 +1,53 @@
-[]
+[
+  {
+    "id": "BE001",
+    "name": "White Marble Tile",
+    "category": "Tiles",
+    "price": 45,
+    "unit": "sq.ft",
+    "size": "4 x 2 ft",
+    "finish": "Glossy",
+    "color": "White",
+    "material": "Ceramic",
+    "code": "BE001",
+    "description": "Premium white marble finish tile.",
+    "image": "",
+    "visible": true,
+    "featured": true,
+    "newArrival": false
+  },
+  {
+    "id": "BE002",
+    "name": "Granite Slab",
+    "category": "Granite",
+    "price": 120,
+    "unit": "sq.ft",
+    "size": "8 x 4 ft",
+    "finish": "Polished",
+    "color": "Black",
+    "material": "Granite",
+    "code": "BE002",
+    "description": "Premium polished granite slab.",
+    "image": "",
+    "visible": true,
+    "featured": false,
+    "newArrival": true
+  },
+  {
+    "id": "BE003",
+    "name": "Wooden Flooring",
+    "category": "Flooring",
+    "price": 85,
+    "unit": "sq.ft",
+    "size": "6 x 4 ft",
+    "finish": "Matt",
+    "color": "Brown",
+    "material": "Ceramic",
+    "code": "BE003",
+    "description": "Elegant wooden look flooring.",
+    "image": "",
+    "visible": true,
+    "featured": true,
+    "newArrival": true
+  }
+]
