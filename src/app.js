@@ -54,7 +54,32 @@ const defaultProducts = [
   }
 ];
 
+let remoteProducts = null;
+
+async function loadProductsFromGitHub() {
+  try {
+    const response = await fetch("data/products.json?ts=" + Date.now());
+
+    if (!response.ok) {
+      throw new Error("products.json load failed");
+    }
+
+    const data = await response.json();
+
+    if (Array.isArray(data)) {
+      remoteProducts = data;
+      renderProducts();
+    }
+  } catch (error) {
+    console.error("GitHub product data error:", error);
+  }
+}
+
 function getProducts() {
+  if (Array.isArray(remoteProducts)) {
+    return remoteProducts;
+  }
+
   try {
     const saved = localStorage.getItem(PRODUCT_KEY);
 
@@ -352,4 +377,5 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("Bharat Enterprises - Tiles & Marbles");
 
   renderFeaturedProducts();
+  loadProductsFromGitHub();
 });
