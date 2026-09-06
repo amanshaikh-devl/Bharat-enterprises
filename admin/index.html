@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bharat Enterprises — Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+
+    <div class="brand">
+      <div class="brand-logo">BE</div>
+      <div>
+        <h2>BHARAT</h2>
+        <span>ENTERPRISES</span>
+      </div>
+    </div>
+
+    <nav class="navigation">
+
+      <button class="nav-link active" data-section="dashboard">
+        <span>⌂</span> Dashboard
+      </button>
+
+      <button class="nav-link" data-section="products">
+        <span>▣</span> Products
+      </button>
+
+      <button class="nav-link" data-section="categories">
+        <span>▤</span> Categories
+      </button>
+
+      <button class="nav-link" data-section="homepage">
+        <span>⌂</span> Homepage
+      </button>
+
+      <button class="nav-link" data-section="enquiries">
+        <span>◌</span> Enquiries
+      </button>
+
+      <button class="nav-link" data-section="settings">
+        <span>⚙</span> Website Settings
+      </button>
+
+    </nav>
+
+    <button class="logout-btn" onclick="logout()">
+      <span>↪</span> Logout
+    </button>
+
+  </aside>
+
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+
+      <button class="menu-button" onclick="toggleSidebar()">☰</button>
+
+      <div class="top-title">
+        <h1 id="pageTitle">Dashboard</h1>
+        <p id="pageSubtitle">Welcome to Bharat Enterprises Admin Panel</p>
+      </div>
+
+      <div class="top-actions">
+
+        <a href="../index.html" target="_blank" class="view-website">
+          ◉ View Website
+        </a>
+
+        <div class="admin-user">
+          <div class="admin-avatar">A</div>
+          <span>Admin</span>
+          <small>⌄</small>
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- DASHBOARD -->
+    <section class="page-section active" id="dashboard">
+
+      <div class="page-heading">
+        <div>
+          <h2>Dashboard</h2>
+          <p>Manage your Bharat Enterprises website.</p>
+        </div>
+
+        <div class="date-box">
+          <strong>▣</strong>
+          <span id="currentDate"></span>
+        </div>
+      </div>
+
+
+      <!-- STATS -->
+      <div class="stats-grid">
+
+        <div class="stat-card blue">
+          <div class="stat-icon">▣</div>
+          <div>
+            <span>Total Products</span>
+            <strong id="totalProducts">0</strong>
+            <small>↗ +5 this week</small>
+          </div>
+        </div>
+
+        <div class="stat-card green">
+          <div class="stat-icon">◉</div>
+          <div>
+            <span>Visible Products</span>
+            <strong id="visibleProducts">0</strong>
+            <small>↗ +3 this week</small>
+          </div>
+        </div>
+
+        <div class="stat-card purple">
+          <div class="stat-icon">★</div>
+          <div>
+            <span>Featured Products</span>
+            <strong id="featuredProducts">0</strong>
+            <small>↗ +2 this week</small>
+          </div>
+        </div>
+
+        <div class="stat-card orange">
+          <div class="stat-icon">▤</div>
+          <div>
+            <span>Categories</span>
+            <strong id="totalCategories">0</strong>
+            <small>↗ +1 this week</small>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="dashboard-grid">
+
+        <!-- RECENT PRODUCTS -->
+        <div class="content-card large-card">
+
+          <div class="card-header">
+            <div>
+              <h3>Recent Products</h3>
+              <p>Recently added products</p>
+            </div>
+
+            <button class="text-button" onclick="openSection('products')">
+              View All →
+            </button>
+          </div>
+
+          <div class="table-wrapper">
+
+            <table>
+
+              <thead>
+                <tr>
+                  <th>Image</th>
+                  <th>Product Name</th>
+                  <th>Category</th>
+                  <th>Price</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="recentProducts"></tbody>
+
+            </table>
+
+          </div>
+
+        </div>
+
+
+        <!-- QUICK ACTIONS -->
+        <div class="content-card quick-card">
+
+          <div class="card-header">
+            <div>
+              <h3>Quick Actions</h3>
+              <p>Manage your website quickly</p>
+            </div>
+          </div>
+
+          <div class="quick-actions">
+
+            <button class="quick blue-btn" onclick="openProductModal()">
+              ＋ Add New Product
+            </button>
+
+            <button class="quick green-btn" onclick="openSection('categories')">
+              ▤ Manage Categories
+            </button>
+
+            <button class="quick purple-btn" onclick="openSection('homepage')">
+              ✎ Edit Homepage
+            </button>
+
+            <button class="quick orange-btn" onclick="openSection('enquiries')">
+              ◌ View Enquiries
+            </button>
+
+            <button class="quick gray-btn" onclick="openSection('settings')">
+              ⚙ Website Settings
+            </button>
+
+          </div>
+
+
+          <div class="online-box">
+            <div class="online-icon">✓</div>
+            <div>
+              <strong>Website is Online</strong>
+              <p>Your website is live and running smoothly.</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- PRODUCTS -->
+    <section class="page-section" id="products">
+
+      <div class="page-heading">
+        <div>
+          <h2>Products</h2>
+          <p>Manage your tiles, marble and granite products.</p>
+        </div>
+
+        <button class="primary-button" onclick="openProductModal()">
+          ＋ Add Product
+        </button>
+      </div>
+
+
+      <div class="filter-bar">
+
+        <input
+          type="search"
+          id="productSearch"
+          placeholder="⌕ Search products..."
+        >
+
+        <select id="productCategoryFilter">
+          <option value="">All Categories</option>
+        </select>
+
+        <select id="productStatusFilter">
+          <option value="">All Status</option>
+          <option value="visible">Visible</option>
+          <option value="hidden">Hidden</option>
+        </select>
+
+      </div>
+
+
+      <div class="content-card">
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+              <tr>
+                <th>Photo</th>
+                <th>Product Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+
+            <tbody id="productsTable"></tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section class="page-section" id="categories">
+
+      <div class="page-heading">
+        <div>
+          <h2>Categories</h2>
+          <p>Manage product categories.</p>
+        </div>
+
+        <button class="primary-button" onclick="addCategoryPrompt()">
+          ＋ Add Category
+        </button>
+      </div>
+
+
+      <div class="content-card">
+
+        <div class="category-grid" id="categoriesList"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- HOMEPAGE -->
+    <section class="page-section" id="homepage">
+
+      <div class="page-heading">
+        <div>
+          <h2>Homepage</h2>
+          <p>Control what appears on your homepage.</p>
+        </div>
+      </div>
+
+
+      <div class="settings-grid">
+
+        <div class="content-card">
+
+          <div class="card-header">
+            <div>
+              <h3>Hero Section</h3>
+              <p>Main homepage banner</p>
+            </div>
+          </div>
+
+          <label>Heading</label>
+          <input type="text" id="heroHeading">
+
+          <label>Description</label>
+          <textarea id="heroDescription"></textarea>
+
+          <label>Hero Image</label>
+
+          <div class="upload-area">
+
+            <input
+              type="file"
+              id="heroImageFile"
+              accept="image/*"
+            >
+
+            <label for="heroImageFile">
+              📷 Change Image
+            </label>
+
+            <img id="heroImagePreview" alt="Hero Preview">
+
+          </div>
+
+          <input type="hidden" id="heroImage">
+
+          <button class="primary-button" onclick="saveHomepage()">
+            Save Changes
+          </button>
+
+        </div>
+
+
+        <div class="content-card">
+
+          <div class="card-header">
+            <div>
+              <h3>Display Settings</h3>
+              <p>Control homepage sections</p>
+            </div>
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div>
+              <strong>Show Categories</strong>
+              <p>Display categories on homepage.</p>
+            </div>
+
+            <label class="switch">
+              <input type="checkbox" id="showCategories">
+              <span></span>
+            </label>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div>
+              <strong>Show Featured Products</strong>
+              <p>Display featured products.</p>
+            </div>
+
+            <label class="switch">
+              <input type="checkbox" id="showFeatured">
+              <span></span>
+            </label>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div>
+              <strong>Show About Section</strong>
+              <p>Display about section.</p>
+            </div>
+
+            <label class="switch">
+              <input type="checkbox" id="showAbout">
+              <span></span>
+            </label>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ENQUIRIES -->
+    <section class="page-section" id="enquiries">
+
+      <div class="page-heading">
+        <div>
+          <h2>Enquiries</h2>
+          <p>Customer enquiries from your website.</p>
+        </div>
+      </div>
+
+
+      <div class="content-card empty-state">
+
+        <div class="empty-icon">◌</div>
+
+        <h3>No enquiries yet</h3>
+
+        <p>
+          Customer enquiries will appear here.
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- SETTINGS -->
+    <section class="page-section" id="settings">
+
+      <div class="page-heading">
+        <div>
+          <h2>Website Settings</h2>
+          <p>Manage your business information and website options.</p>
+        </div>
+      </div>
+
+
+      <div class="settings-grid">
+
+        <div class="content-card">
+
+          <div class="card-header">
+            <div>
+              <h3>Business Information</h3>
+              <p>Your shop information</p>
+            </div>
+          </div>
+
+          <label>Shop Name</label>
+          <input type="text" id="shopName">
+
+          <label>Tagline</label>
+          <input type="text" id="tagline">
+
+          <label>Phone</label>
+          <input type="text" id="phone">
+
+          <label>WhatsApp</label>
+          <input type="text" id="whatsapp">
+
+          <label>Address</label>
+          <textarea id="address"></textarea>
+
+          <label>Opening Hours</label>
+          <input type="text" id="openingHours">
+
+          <label>Email</label>
+          <input type="email" id="email">
+
+        </div>
+
+
+        <div class="content-card">
+
+          <div class="card-header">
+            <div>
+              <h3>Website Options</h3>
+              <p>Control website behaviour</p>
+            </div>
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div>
+              <strong>Website Online</strong>
+              <p>Show website to customers.</p>
+            </div>
+
+            <label class="switch">
+              <input type="checkbox" id="websiteOnline">
+              <span></span>
+            </label>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div>
+              <strong>WhatsApp Button</strong>
+              <p>Show WhatsApp button.</p>
+            </div>
+
+            <label class="switch">
+              <input type="checkbox" id="whatsappButton">
+              <span></span>
+            </label>
+
+          </div>
+
+
+          <div class="toggle-row">
+
+            <div>
+              <strong>Product Prices</strong>
+              <p>Show prices to customers.</p>
+            </div>
+
+            <label class="switch">
+              <input type="checkbox" id="productPrices">
+              <span></span>
+            </label>
+
+          </div>
+
+
+          <button class="primary-button" onclick="saveSettings()">
+            Save Settings
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</div>
+
+
+<!-- PRODUCT MODAL -->
+<div class="modal" id="productModal">
+
+  <div class="modal-box">
+
+    <div class="modal-header">
+
+      <div>
+        <h2 id="modalTitle">Add Product</h2>
+        <p>Add product details and photo.</p>
+      </div>
+
+      <button class="close-modal" onclick="closeProductModal()">×</button>
+
+    </div>
+
+
+    <form id="productForm">
+
+      <input type="hidden" id="productId">
+
+      <div class="product-form-layout">
+
+        <div class="product-fields">
+
+          <label>Product Name *</label>
+          <input type="text" id="productName" required>
+
+
+          <label>Category *</label>
+          <select id="productCategory" required></select>
+
+
+          <div class="two-columns">
+
+            <div>
+              <label>Price</label>
+              <input type="number" id="productPrice">
+            </div>
+
+            <div>
+              <label>Unit</label>
+              <select id="productUnit">
+                <option value="sq.ft">sq.ft</option>
+                <option value="piece">piece</option>
+                <option value="box">box</option>
+                <option value="sq.m">sq.m</option>
+              </select>
+            </div>
+
+          </div>
+
+
+          <div class="two-columns">
+
+            <div>
+              <label>Size</label>
+              <input type="text" id="productSize" placeholder="e.g. 4 × 2 ft">
+            </div>
+
+            <div>
+              <label>Finish</label>
+              <input type="text" id="productFinish" placeholder="e.g. Glossy">
+            </div>
+
+          </div>
+
+
+          <div class="two-columns">
+
+            <div>
+              <label>Color</label>
+              <input type="text" id="productColor">
+            </div>
+
+            <div>
+              <label>Material</label>
+              <input type="text" id="productMaterial">
+            </div>
+
+          </div>
+
+
+          <label>Product Code</label>
+          <input type="text" id="productCode">
+
+
+          <label>Description</label>
+          <textarea id="productDescription"></textarea>
+
+        </div>
+
+
+        <!-- PHOTO UPLOAD -->
+        <div class="photo-side">
+
+          <label>Product Photo</label>
+
+          <div class="photo-upload">
+
+            <input
+              type="file"
+              id="productImageFile"
+              accept="image/*"
+            >
+
+            <label for="productImageFile">
+
+              <div class="upload-icon">↑</div>
+
+              <strong>Click to upload photo</strong>
+
+              <span>or drag and drop</span>
+
+              <small>JPG, PNG (Max 5MB)</small>
+
+            </label>
+
+          </div>
+
+
+          <div class="product-photo-preview" id="imagePreview"></div>
+
+          <input type="hidden" id="productImage">
+
+
+          <div class="modal-toggles">
+
+            <div class="toggle-row">
+
+              <div>
+                <strong>Show on Website</strong>
+                <p>Customers can see this product.</p>
+              </div>
+
+              <label class="switch">
+                <input type="checkbox" id="productVisible" checked>
+                <span></span>
+              </label>
+
+            </div>
+
+
+            <div class="toggle-row">
+
+              <div>
+                <strong>Featured</strong>
+                <p>Show in featured products.</p>
+              </div>
+
+              <label class="switch">
+                <input type="checkbox" id="productFeatured">
+                <span></span>
+              </label>
+
+            </div>
+
+
+            <div class="toggle-row">
+
+              <div>
+                <strong>New Arrival</strong>
+                <p>Mark as new arrival.</p>
+              </div>
+
+              <label class="switch">
+                <input type="checkbox" id="productNewArrival">
+                <span></span>
+              </label>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="modal-footer">
+
+        <button
+          type="button"
+          class="secondary-button"
+          onclick="closeProductModal()"
+        >
+          Cancel
+        </button>
+
+        <button type="submit" class="primary-button">
+          Save Product
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+<script src="app.js"></script>
+
+</body>
+</html>
