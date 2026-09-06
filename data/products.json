@@ -1,5 +1,22 @@
 [
   {
+    "id": "BE875195",
+    "name": "Test 5",
+    "category": "Tiles",
+    "price": 78,
+    "unit": "sq.ft",
+    "size": "57",
+    "finish": "Glossy",
+    "color": "White",
+    "material": "Matel",
+    "code": "Test ",
+    "description": "Test",
+    "image": "",
+    "visible": true,
+    "featured": true,
+    "newArrival": false
+  },
+  {
     "id": "BE001",
     "name": "White Marble Tile",
     "category": "Tiles",
