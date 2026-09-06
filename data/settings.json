@@ -1,1 +1,12 @@
-{}
+{
+  "shopName": "Bharat Enterprises",
+  "tagline": "Tiles & Marbles",
+  "phone": "",
+  "whatsapp": "",
+  "address": "",
+  "openingHours": "Mon - Sun: 9:00 AM - 8:00 PM",
+  "email": "",
+  "websiteOnline": true,
+  "whatsappButton": true,
+  "productPrices": true
+}
